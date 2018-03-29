@@ -1,0 +1,19 @@
+---
+- name: "tf-alice"
+  box:
+    vmw: "bento/ubuntu-16.04"
+    vb: "bento/ubuntu-16.04"
+  ram: "512"
+  vcpu: "1"
+  nics:
+    - type: "private_network"
+      ip_addr: "192.168.50.51"
+- name: "tf-bob"
+  box:
+    vmw: "bento/ubuntu-16.04"
+    vb: "bento/ubuntu-16.04"
+  ram: "512"
+  vcpu: "1"
+  nics:
+    - type: "private_network"
+      ip_addr: "192.168.50.52"
