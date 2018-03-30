@@ -13,3 +13,5 @@ Tunfish pocpoc todo
 - [o] Document the fact that Geneve is the successor of VXLAN
 - [o] Have a look at https://github.com/ccollicutt/ansible_playbooks/tree/master/sdn
 - [o] Add Makefile. i.e. spin up like "make quickstart"
+- [o] Make ansible-wireguard even more flexible
+- [o] Helper for purging all "tb-" and "tn-" network links

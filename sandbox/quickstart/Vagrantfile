@@ -1,8 +1,13 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-
-# Derived from "Open Virtual Network (OVN)" setup by Scott S. Lowe
-# https://github.com/lowescott/learning-tools/tree/master/ovs-ovn/ovn
+#
+# The guts of this recipe have been derived from the
+# "Open Virtual Network (OVN)" setup by Scott S. Lowe, thanks!
+#
+# See also:
+#
+# - https://blog.scottlowe.org/2016/12/07/learning-environments-ovn/
+# - https://github.com/lowescott/learning-tools/tree/master/ovs-ovn/ovn
 
 # Specify minimum Vagrant version and Vagrant API version
 Vagrant.require_version '>= 1.6.0'
