@@ -246,8 +246,7 @@ Tunfish would not have been possible without these awesome people:
 
 - Scott S. Lowe for his `collection of tools and files for learning new technologies`_.
   To be able to easily spin up development and testing environments,
-  we used his Vagrant+Ansible recipe `"Open Virtual Network (OVN)" setup`_
-  to derive our `sandbox/quickstart` environment from.
+  we used his Vagrant+Ansible recipe `"Open Virtual Network (OVN)" setup`_.
   He writes about it at `Learning Environments for OVN`_
   and you might also enjoy reading his `many other articles about Open vSwitch`_.
 

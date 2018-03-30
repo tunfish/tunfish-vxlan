@@ -4,7 +4,7 @@ Tunfish pocpoc changelog
 
 development
 ===========
-- Add virtual circuitry based on VXLAN through the `tunfish-join.sh` program
+- Add `tunfish-join.sh` program to establish virtual layer 2 circuitry through VXLAN
 - Add IP connectivity probing after network setup. Improve console output.
 
 2018-03-30 0.1.0

@@ -15,3 +15,5 @@ Tunfish pocpoc todo
 - [o] Add Makefile. i.e. spin up like "make quickstart"
 - [o] Make ansible-wireguard even more flexible
 - [o] Helper for purging all "tb-" and "tn-" network links
+- [o] Bring in an OpenWRT/LEDE node
+- [o] We need better data management in tunfish-join.sh
