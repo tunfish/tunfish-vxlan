@@ -7,3 +7,4 @@ development
 - Add README
 - Add Vagrant quickstart environment
 - Properly setup and configure WireGuard
+- Add Makefile with documentation builder targets
