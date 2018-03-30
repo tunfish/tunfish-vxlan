@@ -21,6 +21,9 @@ brew cask install vagrant
 echo "INFO:  Installing Ansible"
 brew install ansible
 
+echo "INFO:  Installing Ansible role 'botto.wireguard'"
+ansible-galaxy install --role-file=./provision/requirements.yml --force
+
 # Acquire Linux distribution image
 echo "INFO:  Downloading VirtualBox OS image 'Ubuntu 16.04 (Bento)'"
 [[ ! "$(vagrant box list)" =~ "bento/ubuntu-16.04" ]] && vagrant box add "bento/ubuntu-16.04" --provider virtualbox

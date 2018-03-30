@@ -67,7 +67,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         vb.cpus = machine['vcpu']
         override.vm.box = machine['box']['vb']
       end # srv.vm.provider 'virtualbox'
-      
+
     end # config.vm.define
   end # machines.each
 
@@ -77,7 +77,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Configure the machines with Ansible
   config.vm.provision 'ansible' do |ansible|
     ansible.compatibility_mode  = '2.0'
-    ansible.playbook            = 'provision.yml'
+    ansible.playbook            = 'provision/main.yml'
     #ansible.verbose             = 'v'
   end # config.vm.provision
 

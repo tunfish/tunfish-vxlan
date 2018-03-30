@@ -1,0 +1,3 @@
+- src: https://github.com/tunfish/ansible-wireguard.git
+  version: master
+  name: tunfish.wireguard
