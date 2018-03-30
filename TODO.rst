@@ -12,3 +12,4 @@ Tunfish pocpoc todo
     - https://www.wireguard.com/netns/
 - [o] Document the fact that Geneve is the successor of VXLAN
 - [o] Have a look at https://github.com/ccollicutt/ansible_playbooks/tree/master/sdn
+- [o] Add Makefile. i.e. spin up like "make quickstart"

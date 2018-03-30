@@ -1,3 +1,10 @@
+.. image:: https://ptrace.tunfish.org/thunfisch-160.jpg
+
+|
+
+.. image:: https://img.shields.io/github/tag/tunfish/pocpoc.svg
+    :target: https://github.com/tunfish/pocpoc
+
 ######################
 Tunfish pocpoc runbook
 ######################
@@ -13,6 +20,9 @@ This runbook will guide you through the process of setting
 up an appropriate testbed environment. It will provision
 a number of Vagrant machines and configure them to talk
 to each other over a software-defined secure private network.
+
+After that, you will easily be able to conduct connectivity
+tests and continue with further experiments.
 
 
 *******
@@ -63,12 +73,12 @@ Usage
 
 Start WireGuard tunnel
 ======================
-Login to alice or bob::
+Login to each alice and bob::
 
     vagrant ssh tf-alice
     vagrant ssh tf-bob
 
-::
+Start WireGuard interface::
 
     systemctl start wg-quick@wg0-server
 
@@ -96,7 +106,7 @@ in both directions::
 
 Start overlay network
 =====================
-Let the nodes join the private Tunfish overlay network::
+Let both nodes join the private Tunfish overlay network::
 
     vagrant ssh tf-alice
     sudo /opt/quickstart-dev/tunfish-client/tunfish-join.sh
@@ -106,7 +116,10 @@ Let the nodes join the private Tunfish overlay network::
 
 Test Data Link Layer connectivity
 =================================
-Send raw Ethernet frames using Python
+Todo.
+
+Send raw Ethernet frames using Python, e.g.:
+
 - https://dpkt.readthedocs.io/
 - http://www.secdev.org/projects/scapy/
 - https://github.com/krig/send_arp.py
@@ -130,16 +143,16 @@ Machines
 ::
 
     192.168.50.0/24     The Vagrant network bound to "vboxnet0" on the host machine
-    192.168.50.51       The host "tf-alice" on the "eth1" interface
-    192.168.50.52       The host "tf-bob"   on the "eth1" interface
+    192.168.50.51       The host "tf-alice" on its own "eth1" interface
+    192.168.50.52       The host "tf-bob"   on its own "eth1" interface
 
 WireGuard
 =========
 ::
 
     10.10.10.0/24       The WireGuard network bound to "wg0-server" on each guest machine
-    10.10.10.51         The host "tf-alice" on the "wg0-server" interface
-    10.10.10.52         The host "tf-bob"   on the "wg0-server" interface
+    10.10.10.51         The host "tf-alice" on its own "wg0-server" interface
+    10.10.10.52         The host "tf-bob"   on its own "wg0-server" interface
 
 
 ***********
@@ -154,34 +167,65 @@ To reprovision just a single host, use::
     vagrant up --provision tf-alice
 
 
+*******************
+Project information
+*******************
+
+About
+=====
+The "Tunfish pocpoc" spike is released under the GNU AGPL license.
+Its source code lives on `GitHub <https://github.com/tunfish/pocpoc>`_.
+You might also want to have a look at the `documentation <https://tunfish.org/doc/>`_.
+
+If you'd like to contribute you're most welcome!
+Spend some time taking a look around, locate a bug, design issue or
+spelling mistake and then send us a pull request or create an issue.
+
+Thanks in advance for your efforts, we really appreciate any help or feedback.
+
+Code license
+============
+Licensed under the GNU AGPL license. See LICENSE_ file for details.
+
+.. _LICENSE: https://github.com/tunfish/pocpoc/blob/master/LICENSE
+
+
 ****************
 Acknowledgements
 ****************
 
-Thank you so much for providing such great infrastructure
-components and resources to the community!
+Tunfish would not have been possible without these awesome people:
 
-- Jason Donenfeld for conceiving WireGuard_. After reading the introduction
-  `[RFC] WireGuard: next generation secure network tunnel`_ in late 2016
-  and quickly scanning his `paper about WireGuard`_, nobody wondered
-  that WireGuard is rapidly gaining adoption.
+- Jason Donenfeld for conceiving and building WireGuard_. After reading
+  the introduction `[RFC] WireGuard: next generation secure network tunnel`_
+  in late 2016 and quickly scanning his `paper about WireGuard`_, nobody
+  wondered that WireGuard rapidly gained attraction.
+
+- M. Mahalingam, D. Dutt, K. Duda, P. Agarwal, L. Kreeger, T. Sridhar,
+  M. Bursell and C. Wright for conceiving the
+  `[RFC 7348] Virtual eXtensible Local Area Network (VXLAN)`_ standard,
+  a framework for overlaying virtualized layer 2 networks over layer 3 networks.
+
+- J. Gross, T. Sridhar, P. Garg, C. Wright, I. Ganga, P. Agarwal, K. Duda,
+  D. Dutt and J. Hudson for their work on the VXLAN_ successor Geneve_
+  per `[draft-ietf-nvo3-geneve-06] Geneve: GEneric NEtwork Virtualization Encapsulation`_.
 
 - The `many authors <http://docs.openvswitch.org/en/latest/internals/authors/>`_
   of `Open vSwitch`_.
 
 - Aaron Brady for his journal article `Making your own private Internet`_,
   which strongly inspired the central idea behind this PoC.
-  The `tunfish-join.sh` prototype is derived from his `wg-config.bash`_ gist.
+  The `tunfish-join.sh`_ prototype is derived from his `wg-config.bash`_ gist.
 
 - Scott S. Lowe for his `collection of tools and files for learning new technologies`_.
   To be able to easily spin up development and testing environments,
-  we used his `"Open Virtual Network (OVN)" setup`_ Vagrant recipe
+  we used his Vagrant+Ansible recipe `"Open Virtual Network (OVN)" setup`_
   to derive our `sandbox/quickstart` environment from.
-  He writes about the recipes at `Learning Environments for OVN`_
+  He writes about it at `Learning Environments for OVN`_
   and you might also enjoy reading his `many other articles about Open vSwitch`_.
 
 - Martin Eskdale Moen for his `Ansible role to deploy a wireguard server`_.
-  We forked this to the `tunfish.wireguard`_ role and added some slight improvements.
+  We forked this Ansible_ role to `tunfish.wireguard`_ and added some slight improvements.
 
 - Mitchell Hashimoto, Chris Roberts and the countless other `contributors to Vagrant`_
   for conceiving and maintaining Vagrant_.
@@ -189,50 +233,24 @@ components and resources to the community!
 - Michael DeHaan, James Cammarata, Toshio Kuratomi, Brian Coca, Matt Clay, Dag Wieers
   and the countless other `contributors to Ansible`_ for conceiving and maintaining Ansible_.
 
+Thank you so much for providing such great infrastructure
+components and resources to the community!
+
+
+*******
+Outlook
+*******
+By replacing the Ansible_ roles through SaltStack_ commands, this might
+eventually evolve into a full IaaS_ platform with multitenancy.
+
+See also `Firing events from custom Python scripts`_ and go figure ;].
+
 
 ***************
 Troubleshooting
 ***************
-
-DKMS module not available
-=========================
-
-If the following command does not list any module after you installed wireguard-dkms,::
-
-    modprobe wireguard && lsmod | grep wireguard
-
-or if creating a new link returns::
-
-    # ip link add dev wg0 type wireguard
-    RTNETLINK answers: Operation not supported
-
-you probably miss the linux headers.
-
-These headers are available in ``linux-headers`` or ``linux-lts-headers``
-depending of the kernel installed on your system.
-
-.. note:: https://wiki.archlinux.org/index.php/WireGuard#Troubleshooting
-
-After installing the appropriate linux kernel headers,::
-
-    apt -y install linux-headers-$(uname -r)
-
-just do::
-
-    dpkg-reconfigure wireguard-dkms
-
-
-WireGuard connectivity
-======================
-Run::
-
-    tcpdump -i wg0-server
-
-to tell you whether your packets are reaching the remote server
-or if they're not getting through the tunnel.
-
-.. note:: https://www.ericlight.com/wireguard-part-three-troubleshooting.html
-
+If you encounter any problems during setup, we may humbly
+refer you to the `<doc/troubleshooting.rst>`_ documentation.
 
 
 .. _SDN: https://en.wikipedia.org/wiki/Software-defined_networking
@@ -253,7 +271,13 @@ or if they're not getting through the tunnel.
 
 .. _[RFC] WireGuard\: next generation secure network tunnel: https://lkml.org/lkml/2016/6/28/629
 .. _paper about WireGuard: https://www.wireguard.com/papers/wireguard.pdf
+
+.. _[RFC 7348] Virtual eXtensible Local Area Network (VXLAN): https://tools.ietf.org/html/rfc7348
+.. _Geneve: https://www.redhat.com/en/blog/what-geneve
+.. _[draft-ietf-nvo3-geneve-06] Geneve\: GEneric NEtwork Virtualization Encapsulation: https://tools.ietf.org/html/draft-ietf-nvo3-geneve-06
+
 .. _Making your own private Internet: https://insom.github.io/journal/2017/04/02/
+.. _tunfish-join.sh: https://github.com/tunfish/pocpoc/blob/master/src/tunfish-client/tunfish-join.sh
 .. _wg-config.bash: https://gist.github.com/insom/f8e259a7bd867cdbebae81c0eaf49776
 .. _"Open Virtual Network (OVN)" setup: https://github.com/lowescott/learning-tools/tree/master/ovs-ovn/ovn
 .. _Learning Environments for OVN: https://blog.scottlowe.org/2016/12/07/learning-environments-ovn/
@@ -265,3 +289,7 @@ or if they're not getting through the tunnel.
 .. _Ansible: https://www.ansible.com/
 .. _contributors to Vagrant: https://github.com/hashicorp/vagrant/graphs/contributors
 .. _contributors to Ansible: https://github.com/ansible/ansible/graphs/contributors
+
+.. _SaltStack: https://saltstack.com/
+.. _Firing events from custom Python scripts: https://docs.saltstack.com/en/latest/topics/event/events.html#from-custom-python-scripts
+.. _IaaS: https://en.wikipedia.org/wiki/Infrastructure_as_a_service
