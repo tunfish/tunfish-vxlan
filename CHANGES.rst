@@ -4,6 +4,7 @@ Tunfish pocpoc changelog
 
 development
 ===========
+- Add virtual circuitry based on VXLAN through the `tunfish-join.sh` program
 
 2018-03-30 0.1.0
 ================

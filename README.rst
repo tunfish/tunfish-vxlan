@@ -29,12 +29,12 @@ tests and continue with further experiments.
 Details
 *******
 While the effective network transport is based on IP/UDP,
-the virtual circuit offers `Data Link Layer`_ connectivity
-on a multi-tenant basis through `Open vSwitch`_.
+the virtual circuit offers `Data Link Layer`_ (Layer 2)
+connectivity on a multi-tenant basis through `Open vSwitch`_.
 
 As this unlocks the capability to send Ethernet frames across
 IP networks, it will eventually become possible to use protocols
-and technologies reserved for local networks so far.
+and technologies reserved for local networks (LANs) so far.
 
 It opens the door to countless applications requiring
 `Data Link Layer`_ connectivity like Zeroconf_,
@@ -116,9 +116,32 @@ Let both nodes join the private Tunfish overlay network::
 
 Test Data Link Layer connectivity
 =================================
+
+Check IP connectivity
+---------------------
+Check if sending and receiving ICMP packets works::
+
+    # Login to alice
+    vagrant ssh tf-alice
+
+    # Ping bob
+    vagrant@tf-alice:~$ ping 10.10.20.52
+    64 bytes from 10.10.20.52: icmp_seq=1 ttl=64 time=0.672 ms
+
+in both directions::
+
+    # Login to bob
+    vagrant ssh tf-bob
+
+    # Ping alice
+    vagrant@tf-bob:/tmp$ ping 10.10.20.51
+    64 bytes from 10.10.20.51: icmp_seq=1 ttl=64 time=0.484 ms
+
+Check Layer 2 connectivity
+--------------------------
 Todo.
 
-Send raw Ethernet frames using Python, e.g.:
+Send raw Ethernet frames or other beasts using Python, e.g.:
 
 - https://dpkt.readthedocs.io/
 - http://www.secdev.org/projects/scapy/
@@ -165,6 +188,10 @@ To repeat the virtual machine provisioning, run::
 To reprovision just a single host, use::
 
     vagrant up --provision tf-alice
+
+The source code directory `./src` will be mounted into each
+virtual machine at `/opt/quickstart-dev` for convenient live
+editing.
 
 
 *******************
@@ -234,14 +261,14 @@ Tunfish would not have been possible without these awesome people:
   and the countless other `contributors to Ansible`_ for conceiving and maintaining Ansible_.
 
 Thank you so much for providing such great infrastructure
-components and resources to the community!
+components and resources to the community! You know who you are.
 
 
 *******
 Outlook
 *******
 By replacing the Ansible_ roles through SaltStack_ commands, this might
-eventually evolve into a full IaaS_ platform with multitenancy.
+eventually evolve into a full IaaS_ platform with strong multitenancy capabilities.
 
 See also `Firing events from custom Python scripts`_ and go figure ;].
 

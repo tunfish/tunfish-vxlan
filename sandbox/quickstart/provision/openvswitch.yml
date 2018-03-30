@@ -27,3 +27,4 @@
     with_items:
     - "openvswitch-common"
     - "openvswitch-switch"
+    - "bridge-utils"
