@@ -10,9 +10,9 @@ SDN architectures based on VXLAN + WireGuard or other technologies.
 
 .. note::
 
-	The guts of this recipe have been derived from the 
-	"Open Virtual Network (OVN) setup" blueprint by Scott S. Lowe, see
-	https://github.com/lowescott/learning-tools/tree/master/ovs-ovn/ovn.
+    The guts of this recipe have been derived from the
+    "Open Virtual Network (OVN) setup" blueprint by Scott S. Lowe, see
+    https://github.com/lowescott/learning-tools/tree/master/ovs-ovn/ovn.
 
 These files were created to allow users to use Vagrant ([http://www.vagrantup.com](http://www.vagrantup.com)) to quickly and easily spin up an environment to test Open vSwitch and WireGuard.
 

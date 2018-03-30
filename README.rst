@@ -6,28 +6,28 @@ Tunfish pocpoc runbook
 *****
 About
 *****
-A SDN_ proof-of-concept for approaching convenient VXLAN_ 
+A SDN_ proof-of-concept for approaching convenient VXLAN_
 Layer 2/3 convergence on top of secure WireGuard_ tunnels.
 
 
 *****
 Setup
 *****
-This section will guide you through setting up 
+This section will guide you through setting up
 a development/testing sandbox on your machine.
 
 Acquire source repository::
 
-	git clone https://github.com/tunfish/pocpoc
-	cd pocpoc/sandbox/quickstart
+    git clone https://github.com/tunfish/pocpoc
+    cd pocpoc/sandbox/quickstart
 
 Install requirements on Mac OS X using Homebrew::
 
-	./requirements-macosx.sh
+    ./requirements-macosx.sh
 
 Make Vagrant spin up all machines configured in this environment::
 
-	vagrant up
+    vagrant up
 
 
 *****
