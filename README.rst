@@ -1,6 +1,6 @@
 .. image:: https://img.shields.io/github/tag/tunfish/tunfish-sandbox.svg
     :target: https://github.com/tunfish/tunfish-sandbox
-.. image:: https://img.shields.io/badge/platform-Linux%20%7C%20OpenWRT%20%7C%20LEDE-blue.svg
+.. image:: https://img.shields.io/badge/platform-Linux%20%7C%LEDE%20%7C%2020OpenWRT-blue.svg
     :target: #
 .. image:: https://img.shields.io/badge/technologies-WireGuard%20%7C%20VXLAN%20%7C%20STP%20%7C%20Zeroconf-blue.svg
     :target: #
@@ -11,9 +11,9 @@
     :target: #
 
 
-######################
-Tunfish sandbox README
-######################
+###############
+Tunfish Sandbox
+###############
 
 
 *****
@@ -163,8 +163,8 @@ arping c6:50:ff:83:e3:3a -T 10.10.20.52 -i tb-quickstart
 
 
 
-Todo.
-
+Todo I
+------
 Send raw Ethernet frames or other beasts using Python, e.g.:
 
 - https://dpkt.readthedocs.io/
@@ -180,8 +180,9 @@ Send raw Ethernet frames or other beasts using Python, e.g.:
 - http://www.larsen-b.com/Article/206.html
 
 
-Todo.
-
+Todo II
+-------
+First steps with Zeroconf.
 - https://github.com/jstasiak/python-zeroconf
 - https://stackoverflow.com/questions/39880204/zeroconf-not-found-any-service
 - | Filename based peer to peer file transfer
