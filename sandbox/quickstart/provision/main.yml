@@ -1,9 +1,0 @@
-- name: "Setup Open vSwitch"
-  import_playbook: openvswitch.yml
-
-- name: "Setup and configure WireGuard"
-  import_playbook: wireguard.yml
-
-# TODO
-#- name: "Setup and configure Tunfish"
-#  import_playbook: tunfish.yml

@@ -1,11 +1,12 @@
-########################
-Tunfish pocpoc changelog
-########################
+#########################
+Tunfish sandbox changelog
+#########################
 
 development
 ===========
 - Add `tunfish-join.sh` program to establish virtual layer 2 circuitry through VXLAN
 - Add IP connectivity probing after network setup. Improve console output.
+- Rename "sandbox" directory to "environment"
 
 2018-03-30 0.1.0
 ================
