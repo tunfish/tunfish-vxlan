@@ -8,6 +8,7 @@ development
 - Add IP connectivity probing after network setup. Improve console output.
 - Rename "sandbox" directory to "environment"
 - Naming things. Polishing. Refactoring. Documentation.
+- Add basic service discovery example based on python-zeroconf
 
 2018-03-30 0.1.0
 ================
