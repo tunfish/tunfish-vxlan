@@ -51,3 +51,12 @@ Tunfish sandbox todo
 - [o] *Trusted* networks
 - [o] Docs: Introduce "Goal"
 - [o] Hook "tunfish-join" into if-up.d of wg0-server
+- [o] By replacing the Ansible_ roles through SaltStack_ commands, this might
+      eventually evolve into a full IaaS_ platform with strong multitenancy capabilities.
+      See also `Firing events from custom Python scripts`_ and go figure ;].
+
+
+.. _Ansible: https://www.ansible.com/
+.. _SaltStack: https://saltstack.com/
+.. _Firing events from custom Python scripts: https://docs.saltstack.com/en/latest/topics/event/events.html#from-custom-python-scripts
+.. _IaaS: https://en.wikipedia.org/wiki/Infrastructure_as_a_service

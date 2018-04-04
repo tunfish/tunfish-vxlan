@@ -1,8 +1,8 @@
 .. image:: https://img.shields.io/github/tag/tunfish/tunfish-sandbox.svg
     :target: https://github.com/tunfish/tunfish-sandbox
-.. image:: https://img.shields.io/badge/platform-Linux-blue.svg
+.. image:: https://img.shields.io/badge/platform-Linux%20%7C%20OpenWRT%20%7C%20LEDE-blue.svg
     :target: #
-.. image:: https://img.shields.io/badge/technologies-WireGuard%20%7C%20VXLANLinux-blue.svg
+.. image:: https://img.shields.io/badge/technologies-WireGuard%20%7C%20VXLAN%20%7C%20STP%20%7C%20Zeroconf-blue.svg
     :target: #
 
 |
@@ -88,7 +88,7 @@ Start WireGuard interface::
 
     systemctl start wg-quick@wg0-server
 
-.. note:: This should have happened already by the Ansible role "tunfish.wireguard".
+.. note:: This should have happened already by the Ansible_ role "tunfish.wireguard".
 
 Test WireGuard tunnel
 =====================
@@ -197,7 +197,7 @@ Network layout
 
 Machines
 ========
-The Vagrant network "192.168.50.0/24"::
+The Vagrant network "192.168.50.0/24".
 ::
 
     192.168.50.1        The hypervisor host on its "vboxnet0" interface
@@ -206,14 +206,15 @@ The Vagrant network "192.168.50.0/24"::
 
 WireGuard
 =========
-The WireGuard network "10.10.10.0/24" is running on interface "wg0-server"::
+The WireGuard network "10.10.10.0/24" is running on interface "wg0-server".
+::
 
     10.10.10.51         The host "tf-alice"
     10.10.10.52         The host "tf-bob"
 
 VXLAN
 =====
-The VXLAN network "10.10.20.0/24" is running on interface "tb-quickstart"::
+The VXLAN network "10.10.20.0/24" is running on interface "tb-quickstart".
 ::
 
     10.10.20.51         The host "tf-alice"
@@ -231,8 +232,8 @@ To reprovision just a single host, use::
 
     vagrant up --provision tf-alice
 
-The source code directory `./src` will be mounted into each
-virtual machine at `/opt/quickstart-dev` for convenient live
+The source code directory ``./src`` will be mounted into each
+virtual machine at ``/opt/quickstart-dev`` for convenient live
 editing.
 
 
@@ -305,20 +306,16 @@ Thank you so much for providing such great infrastructure
 components and resources to the community! You know who you are.
 
 
-*******
-Outlook
-*******
-By replacing the Ansible_ roles through SaltStack_ commands, this might
-eventually evolve into a full IaaS_ platform with strong multitenancy capabilities.
-
-See also `Firing events from custom Python scripts`_ and go figure ;].
-
-
 ***************
 Troubleshooting
 ***************
 If you encounter any problems during setup, we may humbly
 refer you to the `<doc/troubleshooting.rst>`_ documentation.
+
+
+----
+
+Have fun!
 
 
 .. _SDN: https://en.wikipedia.org/wiki/Software-defined_networking
@@ -358,6 +355,3 @@ refer you to the `<doc/troubleshooting.rst>`_ documentation.
 .. _contributors to Vagrant: https://github.com/hashicorp/vagrant/graphs/contributors
 .. _contributors to Ansible: https://github.com/ansible/ansible/graphs/contributors
 
-.. _SaltStack: https://saltstack.com/
-.. _Firing events from custom Python scripts: https://docs.saltstack.com/en/latest/topics/event/events.html#from-custom-python-scripts
-.. _IaaS: https://en.wikipedia.org/wiki/Infrastructure_as_a_service
