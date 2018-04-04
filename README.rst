@@ -81,6 +81,7 @@ completely provisioned by Vagrant.
 
 As they are running different networks (IP transport, WireGuard tunnel, VXLAN),
 here is a short overview as an introduction.
+Please read this section carefully.
 
 Machines
 ========
@@ -219,10 +220,12 @@ Todo II
 First steps with Zeroconf.
 - https://github.com/jstasiak/python-zeroconf
 - https://stackoverflow.com/questions/39880204/zeroconf-not-found-any-service
-- | Filename based peer to peer file transfer
-  | https://github.com/nils-werner/zget
-- | pyatv: Apple TV Remote Control Library
-  | http://pyatv.readthedocs.io/
+
+- Filename based peer to peer file transfer
+  https://github.com/nils-werner/zget
+
+- pyatv: Apple TV Remote Control Library
+  http://pyatv.readthedocs.io/
 
 
 ***********
