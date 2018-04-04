@@ -1,6 +1,6 @@
 .. image:: https://img.shields.io/github/tag/tunfish/tunfish-sandbox.svg
     :target: https://github.com/tunfish/tunfish-sandbox
-.. image:: https://img.shields.io/badge/platform-Linux%20%7C%LEDE%20%7C%2020OpenWRT-blue.svg
+.. image:: https://img.shields.io/badge/platform-Linux%20%7C%20LEDE%20%7C%20OpenWRT-blue.svg
     :target: #
 .. image:: https://img.shields.io/badge/technologies-WireGuard%20%7C%20VXLAN%20%7C%20STP%20%7C%20Zeroconf-blue.svg
     :target: #
