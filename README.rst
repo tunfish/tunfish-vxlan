@@ -73,6 +73,41 @@ Make Vagrant provision and spin up all machines configured in this environment::
     vagrant up
 
 
+**************
+Network layout
+**************
+There are two machines ``"tf-alice"`` and ``"tf-bob"``,
+completely provisioned by Vagrant.
+
+As they are running different networks (IP transport, WireGuard tunnel, VXLAN),
+here is a short overview as an introduction.
+
+Machines
+========
+The Vagrant network "192.168.50.0/24".
+::
+
+    192.168.50.1        The hypervisor host on its "vboxnet0" interface
+    192.168.50.51       The guest host "tf-alice" on its "eth1" interface
+    192.168.50.52       The guest host "tf-bob"   on its "eth1" interface
+
+WireGuard
+=========
+The WireGuard network "10.10.10.0/24" is running on interface "wg0-server".
+::
+
+    10.10.10.51         The host "tf-alice"
+    10.10.10.52         The host "tf-bob"
+
+VXLAN
+=====
+The VXLAN network "10.10.20.0/24" is running on interface "tb-quickstart".
+::
+
+    10.10.20.51         The host "tf-alice"
+    10.10.20.52         The host "tf-bob"
+
+
 *****
 Usage
 *****
@@ -179,7 +214,6 @@ Send raw Ethernet frames or other beasts using Python, e.g.:
 - https://sandilands.info/sgordon/teaching/netlab/its332ap5.html
 - http://www.larsen-b.com/Article/206.html
 
-
 Todo II
 -------
 First steps with Zeroconf.
@@ -189,37 +223,6 @@ First steps with Zeroconf.
   | https://github.com/nils-werner/zget
 - | pyatv: Apple TV Remote Control Library
   | http://pyatv.readthedocs.io/
-
-
-
-**************
-Network layout
-**************
-
-Machines
-========
-The Vagrant network "192.168.50.0/24".
-::
-
-    192.168.50.1        The hypervisor host on its "vboxnet0" interface
-    192.168.50.51       The guest host "tf-alice" on its "eth1" interface
-    192.168.50.52       The guest host "tf-bob"   on its "eth1" interface
-
-WireGuard
-=========
-The WireGuard network "10.10.10.0/24" is running on interface "wg0-server".
-::
-
-    10.10.10.51         The host "tf-alice"
-    10.10.10.52         The host "tf-bob"
-
-VXLAN
-=====
-The VXLAN network "10.10.20.0/24" is running on interface "tb-quickstart".
-::
-
-    10.10.20.51         The host "tf-alice"
-    10.10.20.52         The host "tf-bob"
 
 
 ***********
