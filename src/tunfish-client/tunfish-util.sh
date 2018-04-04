@@ -5,13 +5,18 @@
 probe_members_ip() {
 
     # Obtain list if IP addresses to monitor until becoming reachable
-    members=$@
+    members=("${@}")
+
+    # Debugging
+    #echo "members: ${#members[@]} ${members[@]}"
 
     # Total number of members
     member_count=${#members[@]}
 
     # Run the monitor
-    echo -e "INFO:  Waiting for IP connectivity of $(mvalue ${member_count}) members for $(mvalue ${PROBE_IP_TIMEOUT}) seconds each"
+    echo -e "INFO:  Waiting for IP connectivity of $(mvalue ${member_count}) members for $(mvalue ${PROBE_IP_TIMEOUT}) seconds each."
+    echo -e "       Please note your network might be fully functional already,"
+    echo -e "       we are just checking availability of every member."
     failed_count=0
     failed_members=()
     for ip in ${members[@]}; do
@@ -39,7 +44,7 @@ probe_members_ip() {
     # Evaluate monitoring outcome
     if [ $failed_count -eq 0 ]; then
         echo
-        echo -e "${color_green}${color_bold}Self-testing indicates your Tunfish network has been established successfully. Excellent.${color_reset}"
+        echo -e "${color_green}${color_bold}Self-testing indicates network connectivity has been established successfully. Excellent.${color_reset}"
         echo "Have fun!"
         echo
     else

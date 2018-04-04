@@ -36,13 +36,53 @@ just do::
     dpkg-reconfigure wireguard-dkms
 
 
-WireGuard connectivity
-======================
-Run::
+Configuration
+=============
+To dump the WireGuard configuration, use::
+
+    wg showconf wg0-server
+
+
+Connectivity
+============
+Running::
 
     tcpdump -i wg0-server
 
-to tell you whether your packets are reaching the remote server
-or if they're not getting through the tunnel.
+in combination with an ICMP ping::
+
+    vagrant@tf-alice:~# ping 10.10.10.52
+
+on both machines might tell you whether your packets are reaching
+the remote peer or if they're not getting through the tunnel.
 
 .. note:: https://www.ericlight.com/wireguard-part-three-troubleshooting.html
+
+
+
+*********************
+Troubleshooting VXLAN
+*********************
+Display information about bridge device::
+
+    brctl show tb-quickstart
+    bridge monitor
+
+Display Spanning Tree Protocol (STP) information::
+
+    brctl showstp tb-quickstart
+
+Display MAC and ARP information::
+
+    brctl showmacs tb-quickstart
+    arp -a
+
+Ping MAC address through ARP::
+
+    arping -i tb-quickstart 96:71:7d:db:cd:36
+
+To see the dynamic MAC address assignment in action
+while bouncing the link on the remote machine, run::
+
+    watch -n0.5 'arp -a; echo; brctl showmacs tb-quickstart'
+

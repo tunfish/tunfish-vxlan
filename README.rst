@@ -1,12 +1,18 @@
-.. image:: https://ptrace.tunfish.org/thunfisch-160.jpg
+.. image:: https://img.shields.io/github/tag/tunfish/tunfish-sandbox.svg
+    :target: https://github.com/tunfish/tunfish-sandbox
+.. image:: https://img.shields.io/badge/platform-Linux-blue.svg
+    :target: #
+.. image:: https://img.shields.io/badge/technologies-WireGuard%20%7C%20VXLANLinux-blue.svg
+    :target: #
 
 |
 
-.. image:: https://img.shields.io/github/tag/tunfish/pocpoc.svg
-    :target: https://github.com/tunfish/pocpoc
+.. image:: https://ptrace.tunfish.org/thunfisch-160.jpg
+    :target: #
+
 
 ######################
-Tunfish pocpoc runbook
+Tunfish sandbox README
 ######################
 
 
@@ -30,7 +36,7 @@ Details
 *******
 While the effective network transport is based on IP/UDP,
 the virtual circuit offers `Data Link Layer`_ (Layer 2)
-connectivity on a multi-tenant basis through `Open vSwitch`_.
+connectivity on a multi-tenant basis through VXLAN_.
 
 As this unlocks the capability to send Ethernet frames across
 IP networks, it will eventually become possible to use protocols
@@ -55,14 +61,14 @@ a development/testing sandbox on your machine.
 
 Acquire source repository::
 
-    git clone https://github.com/tunfish/pocpoc
-    cd pocpoc/sandbox/quickstart
+    git clone https://github.com/tunfish/tunfish-sandbox
+    cd tunfish-sandbox/environment/quickstart
 
 Install requirements on Mac OS X using Homebrew::
 
     ./requirements-macosx.sh
 
-Make Vagrant spin up all machines configured in this environment::
+Make Vagrant provision and spin up all machines configured in this environment::
 
     vagrant up
 
@@ -139,6 +145,24 @@ in both directions::
 
 Check Layer 2 connectivity
 --------------------------
+Find out about MAC addresses of your peers::
+
+  brctl showmacs tb-quickstart | grep no
+
+or::
+
+  bridge fdb show | grep -v permanent | grep master
+
+Explore the whole neighbourhood::
+
+  nmap -sP 10.10.20.0/24
+
+
+arping -W1.0 10.10.20.52
+arping c6:50:ff:83:e3:3a -T 10.10.20.52 -i tb-quickstart
+
+
+
 Todo.
 
 Send raw Ethernet frames or other beasts using Python, e.g.:
@@ -156,6 +180,16 @@ Send raw Ethernet frames or other beasts using Python, e.g.:
 - http://www.larsen-b.com/Article/206.html
 
 
+Todo.
+
+- https://github.com/jstasiak/python-zeroconf
+- https://stackoverflow.com/questions/39880204/zeroconf-not-found-any-service
+- | Filename based peer to peer file transfer
+  | https://github.com/nils-werner/zget
+- | pyatv: Apple TV Remote Control Library
+  | http://pyatv.readthedocs.io/
+
+
 
 **************
 Network layout
@@ -163,19 +197,27 @@ Network layout
 
 Machines
 ========
+The Vagrant network "192.168.50.0/24"::
 ::
 
-    192.168.50.0/24     The Vagrant network bound to "vboxnet0" on the host machine
-    192.168.50.51       The host "tf-alice" on its own "eth1" interface
-    192.168.50.52       The host "tf-bob"   on its own "eth1" interface
+    192.168.50.1        The hypervisor host on its "vboxnet0" interface
+    192.168.50.51       The guest host "tf-alice" on its "eth1" interface
+    192.168.50.52       The guest host "tf-bob"   on its "eth1" interface
 
 WireGuard
 =========
+The WireGuard network "10.10.10.0/24" is running on interface "wg0-server"::
+
+    10.10.10.51         The host "tf-alice"
+    10.10.10.52         The host "tf-bob"
+
+VXLAN
+=====
+The VXLAN network "10.10.20.0/24" is running on interface "tb-quickstart"::
 ::
 
-    10.10.10.0/24       The WireGuard network bound to "wg0-server" on each guest machine
-    10.10.10.51         The host "tf-alice" on its own "wg0-server" interface
-    10.10.10.52         The host "tf-bob"   on its own "wg0-server" interface
+    10.10.20.51         The host "tf-alice"
+    10.10.20.52         The host "tf-bob"
 
 
 ***********
@@ -200,9 +242,9 @@ Project information
 
 About
 =====
-The "Tunfish pocpoc" spike is released under the GNU AGPL license.
-Its source code lives on `GitHub <https://github.com/tunfish/pocpoc>`_.
-You might also want to have a look at the `documentation <https://tunfish.org/doc/>`_.
+The "Tunfish sandbox" spike is released under the GNU AGPL license.
+Its source code lives on `GitHub <https://github.com/tunfish/tunfish-sandbox>`_.
+You might also want to have a look at the `documentation <https://tunfish.org/doc/sandbox/>`_.
 
 If you'd like to contribute you're most welcome!
 Spend some time taking a look around, locate a bug, design issue or
@@ -210,11 +252,11 @@ spelling mistake and then send us a pull request or create an issue.
 
 Thanks in advance for your efforts, we really appreciate any help or feedback.
 
-Code license
-============
+License
+=======
 Licensed under the GNU AGPL license. See LICENSE_ file for details.
 
-.. _LICENSE: https://github.com/tunfish/pocpoc/blob/master/LICENSE
+.. _LICENSE: https://github.com/tunfish/tunfish-sandbox/blob/master/LICENSE
 
 
 ****************
@@ -303,7 +345,7 @@ refer you to the `<doc/troubleshooting.rst>`_ documentation.
 .. _[draft-ietf-nvo3-geneve-06] Geneve\: GEneric NEtwork Virtualization Encapsulation: https://tools.ietf.org/html/draft-ietf-nvo3-geneve-06
 
 .. _Making your own private Internet: https://insom.github.io/journal/2017/04/02/
-.. _tunfish-join.sh: https://github.com/tunfish/pocpoc/blob/master/src/tunfish-client/tunfish-join.sh
+.. _tunfish-join.sh: https://github.com/tunfish/tunfish-sandbox/blob/master/src/tunfish-client/tunfish-join.sh
 .. _wg-config.bash: https://gist.github.com/insom/f8e259a7bd867cdbebae81c0eaf49776
 .. _"Open Virtual Network (OVN)" setup: https://github.com/lowescott/learning-tools/tree/master/ovs-ovn/ovn
 .. _Learning Environments for OVN: https://blog.scottlowe.org/2016/12/07/learning-environments-ovn/

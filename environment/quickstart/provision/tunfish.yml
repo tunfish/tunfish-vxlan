@@ -1,0 +1,27 @@
+---
+- hosts: "all"
+  become: "yes"
+  remote_user: "vagrant"
+
+  tasks:
+
+  - name: "Install requirements for Tunfish"
+    apt:
+      state: "present"
+      update_cache: "no"
+      name: "{{ item }}"
+    with_items:
+    - "iproute2"
+    - "bridge-utils"
+    - "nmap"
+    - "python3-pip"
+
+  # TODO: pip3 install zeroconf
+
+  #- name: "Install configuration script"
+  #  template:
+  #    src: "setup.sh.j2"
+  #    dest: "/home/vagrant/setup.sh"
+  #    owner: "vagrant"
+  #    group: "vagrant"
+  #    mode: "0755"
