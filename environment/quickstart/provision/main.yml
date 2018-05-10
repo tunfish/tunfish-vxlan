@@ -6,3 +6,6 @@
 
 - name: "Setup and configure Tunfish"
   import_playbook: tunfish.yml
+
+- name: "Setup and configure OpenResty"
+  import_playbook: openresty.yml

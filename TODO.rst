@@ -2,6 +2,7 @@
 Tunfish Sandbox Todo
 ####################
 
+- [o] How to solve "deb http://openresty.org/package/ubuntu $(lsb_release -sc) main" with Ansible?
 - [o] Gateway from private network to internet
     - https://github.com/xcellardoor/wireguard-simple-vpn-config
     - https://www.ckn.io/blog/2017/11/14/wireguard-vpn-typical-setup/

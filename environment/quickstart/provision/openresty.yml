@@ -1,0 +1,32 @@
+---
+- hosts: "all"
+  become: "yes"
+  remote_user: "vagrant"
+
+  tasks:
+
+  - name: Install "software-properties-common" package
+    apt:
+      name: "software-properties-common"
+      update_cache: "no"
+
+  - name: Import OpenResty GPG key
+    apt_key:
+      url: "https://openresty.org/package/pubkey.gpg"
+      state: "present"
+
+  - name: "Add OpenResty APT repository"
+    apt_repository:
+      repo: "{{ item }}"
+      state: "present"
+      update_cache: "yes"
+    with_items:
+    - "deb http://openresty.org/package/ubuntu xenial main"
+
+  - name: "Install OpenResty"
+    apt:
+      state: "present"
+      update_cache: "yes"
+      name: "{{ item }}"
+    with_items:
+    - "openresty"
