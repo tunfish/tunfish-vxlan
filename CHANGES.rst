@@ -5,6 +5,7 @@ Tunfish Sandbox Changelog
 development
 ===========
 - Add basic websocket server based on OpenResty
+- Add basic Tunfish client ``tunctl.{lua,py}``
 
 2018-05-11 0.2.0
 ================
