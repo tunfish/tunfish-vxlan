@@ -4,6 +4,7 @@ Tunfish Sandbox Changelog
 
 development
 ===========
+- Add basic websocket server based on OpenResty
 
 2018-05-11 0.2.0
 ================
