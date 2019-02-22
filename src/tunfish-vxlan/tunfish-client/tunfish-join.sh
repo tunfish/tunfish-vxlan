@@ -20,7 +20,7 @@
 # ::
 #
 #     vagrant ssh tf-alice
-#     sudo /opt/quickstart-dev/tunfish-client/tunfish-join.sh
+#     sudo /opt/tunfish-vxlan/tunfish-client/tunfish-join.sh
 #
 # References
 # ----------

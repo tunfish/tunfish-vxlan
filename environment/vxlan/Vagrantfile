@@ -77,7 +77,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end # machines.each
 
   # Mount source code directory
-  config.vm.synced_folder "../../src/", "/opt/quickstart-dev"
+  config.vm.synced_folder "../../src/tunfish-vxlan", "/opt/tunfish-vxlan"
 
   # Configure the machines with Ansible
   config.vm.provision 'ansible' do |ansible|

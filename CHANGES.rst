@@ -6,6 +6,7 @@ development
 ===========
 - Add basic websocket server based on OpenResty
 - Add basic Tunfish client ``tunctl.{lua,py}``
+- Put Tunfish VXLAN aside
 
 2018-05-11 0.2.0
 ================
@@ -19,6 +20,6 @@ development
 2018-03-30 0.1.0
 ================
 - Add README
-- Add Vagrant quickstart environment
+- Add Vagrant environment for tunfish-vxlan
 - Properly setup and configure WireGuard
 - Add Makefile with documentation builder targets

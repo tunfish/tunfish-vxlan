@@ -1,16 +1,3 @@
-.. image:: https://img.shields.io/github/tag/tunfish/tunfish-sandbox.svg
-    :target: https://github.com/tunfish/tunfish-sandbox
-.. image:: https://img.shields.io/badge/platform-Linux%20%7C%20LEDE%20%7C%20OpenWRT-blue.svg
-    :target: #
-.. image:: https://img.shields.io/badge/technologies-WireGuard%20%7C%20VXLAN%20%7C%20STP%20%7C%20Zeroconf-blue.svg
-    :target: #
-
-|
-
-.. image:: https://ptrace.tunfish.org/thunfisch-160.jpg
-    :target: #
-
-
 #############
 Tunfish VXLAN
 #############
@@ -65,7 +52,7 @@ a development/testing sandbox on your machine.
 Acquire source repository::
 
     git clone https://github.com/tunfish/tunfish-sandbox
-    cd tunfish-sandbox/environment/quickstart
+    cd tunfish-sandbox/environment/vxlan
 
 Install requirements on Mac OS X using Homebrew::
 
@@ -154,10 +141,10 @@ Start overlay network
 Let both nodes join the private Tunfish overlay network::
 
     vagrant ssh tf-alice
-    sudo /opt/quickstart-dev/tunfish-client/tunfish-join.sh
+    sudo /opt/tunfish-vxlan/tunfish-client/tunfish-join.sh
 
     vagrant ssh tf-bob
-    sudo /opt/quickstart-dev/tunfish-client/tunfish-join.sh
+    sudo /opt/tunfish-vxlan/tunfish-client/tunfish-join.sh
 
 Test Data Link Layer connectivity
 =================================
@@ -196,9 +183,10 @@ Explore the whole neighbourhood::
 
   nmap -sP 10.10.20.0/24
 
+arping::
 
-arping -W1.0 10.10.20.52
-arping c6:50:ff:83:e3:3a -T 10.10.20.52 -i tb-quickstart
+    arping -W1.0 10.10.20.52
+    arping c6:50:ff:83:e3:3a -T 10.10.20.52 -i tb-quickstart
 
 
 
@@ -244,38 +232,15 @@ To reprovision just a single host, use::
     vagrant up --provision tf-alice
 
 The source code directory ``./src`` will be mounted into each
-virtual machine at ``/opt/quickstart-dev`` for convenient live
+virtual machine at ``/opt/tunfish-vxlan`` for convenient live
 editing.
-
-
-*******************
-Project information
-*******************
-
-About
-=====
-The "Tunfish sandbox" spike is released under the GNU AGPL license.
-Its source code lives on `GitHub <https://github.com/tunfish/tunfish-sandbox>`_.
-You might also want to have a look at the `documentation <https://tunfish.org/doc/sandbox/>`_.
-
-If you'd like to contribute you're most welcome!
-Spend some time taking a look around, locate a bug, design issue or
-spelling mistake and then send us a pull request or create an issue.
-
-Thanks in advance for your efforts, we really appreciate any help or feedback.
-
-License
-=======
-Licensed under the GNU AGPL license. See LICENSE_ file for details.
-
-.. _LICENSE: https://github.com/tunfish/tunfish-sandbox/blob/master/LICENSE
 
 
 ****************
 Acknowledgements
 ****************
 
-Tunfish would not have been possible without these awesome people:
+Tunfish VXLAN would not have been possible without these awesome people:
 
 - Jason Donenfeld for conceiving and building WireGuard_. After reading
   the introduction `[RFC] WireGuard: next generation secure network tunnel`_

@@ -43,7 +43,7 @@ These instructions assume you've already installed Vagrant, your back-end virtua
 
 3. Run `vagrant up` to have Vagrant instantiate the three machines configured by default in this environment, and provision them using Ansible. (Note you'll need Ansible installed locally on the system where you're running `vagrant up`.)
 
-4. Use `vagrant ssh tf-alice` to log into the first system. Run `sudo /opt/quickstart-dev/tunfish-client/tunfish-join.sh` to perform final configuration steps.
+4. Use `vagrant ssh tf-alice` to log into the first system. Run `sudo /opt/tunfish-vxlan/tunfish-client/tunfish-join.sh` to perform final configuration steps.
 
 5. Repeat step #4 with `tf-alice` and `tf-bob`.
 
