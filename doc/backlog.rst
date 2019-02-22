@@ -2,7 +2,31 @@
 Tunfish Sandbox Todo
 ####################
 
+
+****************
+Tunfish Platform
+****************
+
+
+
+*************
+Tunfish VXLAN
+*************
+
+Version 0.2.0
+=============
 - [o] How to solve "deb http://openresty.org/package/ubuntu $(lsb_release -sc) main" with Ansible?
+- [o] Make tunctl.lua work
+- [o] Add OpenWRT box plus provisioning
+- [o] Switch to provisioning with Salt
+
+    - https://www.vagrantup.com/docs/provisioning/salt.html
+    - https://github.com/JustinCarmony/vagrant-salt-example
+    - https://www.imagescape.com/blog/2015/08/24/testing-saltstack-vagrant/
+    - https://github.com/saltstack/salty-vagrant
+
+Version 0.1.0
+=============
 - [o] Gateway from private network to internet
     - https://github.com/xcellardoor/wireguard-simple-vpn-config
     - https://www.ckn.io/blog/2017/11/14/wireguard-vpn-typical-setup/
