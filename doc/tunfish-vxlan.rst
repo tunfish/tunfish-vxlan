@@ -1,3 +1,9 @@
+.. image:: https://img.shields.io/badge/platform-Linux%20%7C%20OpenWRT%20%7C%20LEDE-blue.svg
+    :target: #
+.. image:: https://img.shields.io/badge/technologies-WireGuard%20%7C%20VXLAN%20%7C%20STP%20%7C%20Zeroconf-blue.svg
+    :target: #
+
+
 #############
 Tunfish VXLAN
 #############
